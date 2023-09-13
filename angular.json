@@ -3,9 +3,13 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "headford": {
+    "template": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,24 +17,32 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/headford",
+            "outputPath": "dist/template",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+                "src/assets/lib/owlcarousel/assets/owl.carousel.min.css",
+                "src/assets/lib/animate/animate.min.css",
+                "src/assets/css/bootstrap.min.css",
+                "src/assets/css/style.css",
+                "src/styles.scss"
             ],
             "scripts": [
-              "./node_modules/bootstrap/dist/js/bootstrap.js",
-              "./node_modules/jquery/dist/jquery.js"
+                "src/assets/lib/wow/wow.min.js",
+                "src/assets/lib/easing/easing.min.js",
+                "src/assets/lib/waypoints/waypoints.min.js",
+                "src/assets/lib/counterup/counterup.min.js",
+                "src/assets/lib/owlcarousel/owl.carousel.min.js",
+                "src/assets/js/main.js"              
             ]
           },
           "configurations": {
@@ -70,10 +82,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "headford:build:production"
+              "browserTarget": "template:build:production"
             },
             "development": {
-              "browserTarget": "headford:build:development"
+              "browserTarget": "template:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +93,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "headford:build"
+            "browserTarget": "template:build"
           }
         },
         "test": {
@@ -92,12 +104,13 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }

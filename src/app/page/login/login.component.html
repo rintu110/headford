@@ -1,0 +1,89 @@
+  <!-- Contact Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">Signup</h5>
+            </div>
+            <!-- <div *ngIf="isLoggedin === false"> -->
+                <div class="google-login">
+                    <div id="g_id_onload"
+                            data-client_id="298517344649-5jol7lun0bpp3o8cvf4hs7gi7e63vmid.apps.googleusercontent.com"
+                            data-context="signin"
+                            data-ux_mode="popup"
+                            data-login_uri="http://localhost:4200"
+                            data-nonce=""
+                            data-auto_prompt="false">
+                    </div>
+
+                    <div class="g_id_signin"
+                        data-type="standard"
+                        data-shape="pill"
+                        data-theme="filled_blue"
+                        data-text="signin_with"
+                        data-size="large"
+                        data-logo_alignment="left">
+                    </div>
+                    <!--     -->
+                    <!-- <asl-google-signin-button GoogleSigninButtonDirective type='standard' size="large" width="310" shape="pill" theme="filled_black" data-text="continue_with"></asl-google-signin-button> -->
+                </div>
+               
+              <!-- </div> -->
+              <!-- <div *ngIf="isLoggedin === true"> -->
+            <div class="row g-5">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 wow slideInUp" data-wow-delay="0.3s">
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()" >
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Your First Name" formControlName="firstName" style="height: 55px;" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
+                                <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['firstName'].errors['required']">First Name is required</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Your Last Name" formControlName="lastName" style="height: 55px;"  [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
+                                <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['lastName'].errors['required']">Last Name is required</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Mobile No." formControlName="mobileNumber" style="height: 55px;"  maxlength="10"  [ngClass]="{ 'is-invalid': submitted && f['mobileNumber'].errors }">
+                                <div *ngIf="submitted && f['mobileNumber'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['mobileNumber'].errors['required']">Mobile Number is required</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <input type="email" class="form-control border-0 bg-light px-4" placeholder="Enter Email" formControlName="email" style="height: 55px;"  [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Enter Address" formControlName="address" style="height: 55px;" [ngClass]="{ 'is-invalid': submitted && f['address'].errors }">
+                                <div *ngIf="submitted && f['address'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['address'].errors['required']">Address is required</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Enter City" formControlName="city" style="height: 55px;" [ngClass]="{ 'is-invalid': submitted && f['city'].errors }">
+                                <div *ngIf="submitted && f['city'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['city'].errors['required']">City is required</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Enter State" formControlName="state" style="height: 55px;" [ngClass]="{ 'is-invalid': submitted && f['state'].errors }">
+                                <div *ngIf="submitted && f['state'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['state'].errors['required']">State is required</div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Signup</button>
+                            </div>
+                        </div>
+                    </form>                    
+                </div>                
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+    <!-- Contact End -->

@@ -1,28 +1,85 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {RecaptchaV3Module,RECAPTCHA_V3_SITE_KEY} from 'ng-recaptcha';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './website/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './website/includes/header/header.component';
-import { FooterComponent } from './website/includes/footer/footer.component';
-import { NavBarComponent } from './website/includes/nav-bar/nav-bar.component';
-import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './page/layout/header/header.component';
+import { TopmenuComponent } from './page/layout/topmenu/topmenu.component';
+import { FooterComponent } from './page/layout/footer/footer.component';
+import { HomeComponent } from './page/home/home.component';
+import { AboutComponent } from './page/about/about.component';
+import { ServiceComponent } from './page/service/service.component';
+import { BlogComponent } from './page/blog/blog.component';
+import { BlogDetailsComponent } from './page/blog-details/blog-details.component';
+import { PriceComponent } from './page/price/price.component';
+import { FeatureComponent } from './page/feature/feature.component';
+import { TeamComponent } from './page/team/team.component';
+import { TestimonialComponent } from './page/testimonial/testimonial.component';
+import { QuoteComponent } from './page/quote/quote.component';
+import { ContactComponent } from './page/contact/contact.component';
+import { VendorComponent } from './page/vendor/vendor.component';
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { LoginComponent } from './page/login/login.component';
+import { environment } from 'src/environments/environment';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     HeaderComponent,
+    TopmenuComponent,
     FooterComponent,
-    NavBarComponent
+    HomeComponent,
+    AboutComponent,
+    ServiceComponent,
+    BlogComponent,
+    BlogDetailsComponent,
+    PriceComponent,
+    FeatureComponent,
+    TeamComponent,
+    TestimonialComponent,
+    QuoteComponent,
+    ContactComponent,
+    VendorComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RecaptchaV3Module,
+    SocialLoginModule,
+    HttpClientModule,
+    RecaptchaV3Module,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '298517344649-5jol7lun0bpp3o8cvf4hs7gi7e63vmid.apps.googleusercontent.com'
+            )
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    },
+    {
+      provide: RECAPTCHA_V3_SITE_KEY,
+      useValue: environment.recaptcha.siteKey
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

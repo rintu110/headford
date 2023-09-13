@@ -1,6 +1,14 @@
 <div>
-  <app-header></app-header>
-  <app-nav-bar></app-nav-bar>
-  <app-footer></app-footer>
-  <router-outlet></router-outlet>
-</div>  
+  <ng-container>
+    <app-header></app-header>
+    <app-topmenu></app-topmenu>
+  </ng-container>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+
+  <ng-container>
+      <app-footer></app-footer>
+  </ng-container>
+</div>
